@@ -68,7 +68,7 @@ class CharlieAIEngine:
 
                     response = self.llm_client.generate_response(intent="give_up_and_move_on", target_word=word)
                 else:
-                    response = self.llm_client.generate_response(intent=intent, target_word=word)
+                    response = self.llm_client.generate_response(intent=intent, target_word=word, user_input=user_input)
 
             return response, context
 

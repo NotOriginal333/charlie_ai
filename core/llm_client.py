@@ -16,7 +16,6 @@ class CharlieLLMClient:
 
     def analyze_intent(self, user_input: str, target_word: str) -> dict:
         safe_input = user_input.strip() if user_input.strip() else "(silence)"
-
         user_prompt = f"Target word is: '{target_word}'. The kid said: '{safe_input}'. Analyze the intent."
 
         try:
@@ -37,22 +36,25 @@ class CharlieLLMClient:
             logger.error(f"Groq API/JSON Error (Intent): {e}")
             return {"intent": "incorrect"}
 
-    def generate_response(self, intent: str, target_word: Optional[str] = None) -> str:
+    def generate_response(self, intent: str, target_word: Optional[str] = None,
+                          user_input: Optional[str] = None) -> str:
+        kid_said = f" The kid just said: '{user_input}'." if user_input else ""
+
         instructions = {
             "greeting": "Introduce yourself briefly as Charlie the fox and ask if they want to play a game.",
             "presenting": f"Excitedly point out the word '{target_word}' and ask the kid to say it.",
             "correct": f"Praise them enthusiastically for correctly saying '{target_word}'!",
-            "incorrect": f"Gently encourage them to try saying '{target_word}' again. Do not say they are wrong.",
-            "off_topic": f"Gently redirect their attention back to the word '{target_word}'.",
+            "incorrect": f"Gently encourage them to try saying '{target_word}' "
+                         f"again.{kid_said} Do not say they are wrong.",
+            "off_topic": f"Acknowledge what they said briefly and positively."
+                         f"{kid_said} Then gently redirect their attention back to the word '{target_word}'.",
             "silence": f"Ask if they are still there and prompt them to say '{target_word}'.",
             "give_up_and_move_on": "Gently say let's try a new word.",
             "goodbye": "Congratulate them on finishing the lesson and say goodbye nicely."
         }
 
         specific_instruction = instructions.get(intent, instructions["incorrect"])
-
-        user_prompt = f"Context: {specific_instruction}\n"
-        user_prompt += "Write Charlie's exact response now."
+        user_prompt = f"Context: {specific_instruction}\nWrite Charlie's exact response now."
 
         try:
             response = self.client.chat.completions.create(
