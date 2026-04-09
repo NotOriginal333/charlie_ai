@@ -45,7 +45,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "groq", specifier = "==0.4.2" },
+    { name = "groq", specifier = ">=0.11.0" },
     { name = "pydantic", specifier = "==2.6.4" },
     { name = "python-dotenv", specifier = "==1.0.1" },
 ]
@@ -61,7 +61,7 @@ wheels = [
 
 [[package]]
 name = "groq"
-version = "0.4.2"
+version = "1.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -71,9 +71,9 @@ dependencies = [
     { name = "sniffio" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a0/dc/2802faba3a7cb7349b355715d210af0043f8c07f03a0104d6fc5352bbdb6/groq-0.4.2.tar.gz", hash = "sha256:42e8b0abd0f2b2da024b9a747d28960d62951a5364f078e1537c9fceeca8259d", size = 52609, upload-time = "2024-03-01T22:13:58.814Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d3/c7/a2153b639062f59f9bc93a1b5507c0c4a6b654b8a9edbf432ec2f4a62d2d/groq-1.1.2.tar.gz", hash = "sha256:9ec2b5b6a1c4856a8c6c38741353c5ab37472a4e3fded02af783750d849cc988", size = 154033, upload-time = "2026-03-25T23:16:10.313Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b2/19/08a43f1fb3d8d289c08b20303d5d7ce93e218e5b049faf7b7d175c003703/groq-0.4.2-py3-none-any.whl", hash = "sha256:5b2b472c64d9f35210e0487db465415d47162da3a114031ecbfc8843d26302a5", size = 65748, upload-time = "2024-03-01T22:13:56.97Z" },
+    { url = "https://files.pythonhosted.org/packages/34/b0/83e3892a4597a4b8ebf8a662aeaf314765c4c2340516eb1d049b459b24fc/groq-1.1.2-py3-none-any.whl", hash = "sha256:348cb7a674b6aa7105719b533f6fc48fd32b503bc9256924aaed6dc186f778b5", size = 141700, upload-time = "2026-03-25T23:16:08.998Z" },
 ]
 
 [[package]]
